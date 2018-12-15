@@ -541,7 +541,10 @@ public class AWS4Signer extends AbstractAWSSigner implements
             hostHeaderBuilder.append(":").append(endpoint.getPort());
         }
 
-        request.addHeader(HOST, hostHeaderBuilder.toString());
+        //request.addHeader(HOST, hostHeaderBuilder.toString());
+        //request.addHeader(HOST, "ualter.azambuja");
+        request.addHeader(HOST, "s3.us-east-1.amazonaws.com");
+        
     }
 
     /**
