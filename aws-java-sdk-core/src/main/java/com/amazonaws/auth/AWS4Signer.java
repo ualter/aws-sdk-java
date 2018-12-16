@@ -544,11 +544,16 @@ public class AWS4Signer extends AbstractAWSSigner implements
         // Original
         //request.addHeader(HOST, hostHeaderBuilder.toString());
         
-        // Mines
+        // My hacking
         //request.addHeader(HOST, "ualter.azambuja");
-        //request.addHeader(HOST, "s3.us-east-1.amazonaws.com");
-        request.addHeader(HOST, "s3.us-west-2.amazonaws.com");
-        
+        if ( request.getEndpoint().getHost().contains("bancsabadells3.us-west-2") ) {
+        	request.addHeader(HOST, "s3.us-west-2.amazonaws.com");
+        } else
+        if ( request.getEndpoint().getHost().contains("bancsabadells3.us-east-1") ) {
+        	request.addHeader(HOST, "s3.us-east-1.amazonaws.com");	
+        } else {
+        	request.addHeader(HOST, hostHeaderBuilder.toString());
+        }
     }
 
     /**
